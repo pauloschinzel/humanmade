@@ -1,35 +1,343 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>humanmade.agency</title>
-<style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html, body {
-        height: 100%;
-        background: #ffeb00;
-    }
-    body {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-    .circle-logo {
-        width: 200px;
-        height: 200px;
-        background: #000;
-        border-radius: 50%;
-    }
-    @media (max-width: 600px) {
-        .circle-logo {
-            width: 150px;
-            height: 150px;
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>humanmade.agency - Coming Soon</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
-    }
-</style>
+
+        html, body {
+            height: 100%;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            overflow: hidden;
+        }
+
+        body {
+            background: linear-gradient(135deg, #ffeb00 0%, #ffd700 50%, #ffaa00 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        /* Animated background shapes */
+        .bg-shape {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.1;
+            animation: float 20s infinite ease-in-out;
+        }
+
+        .bg-shape:nth-child(1) {
+            width: 400px;
+            height: 400px;
+            background: #000;
+            top: -100px;
+            left: -100px;
+            animation-delay: 0s;
+        }
+
+        .bg-shape:nth-child(2) {
+            width: 300px;
+            height: 300px;
+            background: #000;
+            bottom: -80px;
+            right: -80px;
+            animation-delay: 5s;
+        }
+
+        .bg-shape:nth-child(3) {
+            width: 200px;
+            height: 200px;
+            background: #fff;
+            top: 50%;
+            right: 10%;
+            animation-delay: 10s;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translate(0, 0) scale(1);
+            }
+            33% {
+                transform: translate(30px, -30px) scale(1.1);
+            }
+            66% {
+                transform: translate(-20px, 20px) scale(0.9);
+            }
+        }
+
+        /* Main container */
+        .container {
+            text-align: center;
+            z-index: 10;
+            max-width: 800px;
+            padding: 40px 20px;
+        }
+
+        /* Logo */
+        .logo {
+            margin: 0 auto 60px;
+            position: relative;
+            width: 180px;
+            height: 180px;
+        }
+
+        .circle-logo {
+            width: 180px;
+            height: 180px;
+            background: #000;
+            border-radius: 50%;
+            position: relative;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            animation: pulse 3s infinite ease-in-out;
+        }
+
+        .circle-logo::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90%;
+            height: 90%;
+            border: 3px solid #ffeb00;
+            border-radius: 50%;
+            opacity: 0;
+            animation: ripple 3s infinite ease-out;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        @keyframes ripple {
+            0% {
+                transform: translate(-50%, -50%) scale(0.8);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(1.5);
+                opacity: 0;
+            }
+        }
+
+        /* Typography */
+        h1 {
+            font-size: 64px;
+            font-weight: 900;
+            color: #000;
+            margin-bottom: 20px;
+            letter-spacing: -2px;
+            line-height: 1.1;
+            text-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .subtitle {
+            font-size: 24px;
+            font-weight: 300;
+            color: #333;
+            margin-bottom: 40px;
+            letter-spacing: -0.5px;
+        }
+
+        .tagline {
+            font-size: 18px;
+            font-weight: 400;
+            color: #000;
+            max-width: 600px;
+            margin: 0 auto 60px;
+            line-height: 1.6;
+        }
+
+        /* Construction badge */
+        .badge {
+            display: inline-block;
+            background: #000;
+            color: #ffeb00;
+            padding: 12px 32px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 40px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+            animation: fadeInUp 1s ease-out;
+        }
+
+        /* Animated dots */
+        .loading-dots {
+            display: inline-flex;
+            gap: 8px;
+            margin-left: 8px;
+        }
+
+        .dot {
+            width: 6px;
+            height: 6px;
+            background: #ffeb00;
+            border-radius: 50%;
+            animation: bounce 1.4s infinite ease-in-out;
+        }
+
+        .dot:nth-child(1) {
+            animation-delay: -0.32s;
+        }
+
+        .dot:nth-child(2) {
+            animation-delay: -0.16s;
+        }
+
+        @keyframes bounce {
+            0%, 80%, 100% {
+                transform: scale(0);
+                opacity: 0.5;
+            }
+            40% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        /* Contact section */
+        .contact {
+            margin-top: 60px;
+            animation: fadeInUp 1s ease-out 0.3s backwards;
+        }
+
+        .contact p {
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .email-link {
+            display: inline-block;
+            color: #000;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 18px;
+            padding: 16px 40px;
+            background: rgba(0, 0, 0, 0.1);
+            border: 2px solid #000;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+
+        .email-link:hover {
+            background: #000;
+            color: #ffeb00;
+            transform: translateY(-2px);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 48px;
+            }
+
+            .subtitle {
+                font-size: 20px;
+            }
+
+            .tagline {
+                font-size: 16px;
+                padding: 0 20px;
+            }
+
+            .logo {
+                width: 140px;
+                height: 140px;
+                margin-bottom: 40px;
+            }
+
+            .circle-logo {
+                width: 140px;
+                height: 140px;
+            }
+
+            .bg-shape {
+                display: none;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 36px;
+            }
+
+            .subtitle {
+                font-size: 18px;
+            }
+
+            .badge {
+                font-size: 12px;
+                padding: 10px 24px;
+            }
+
+            .email-link {
+                font-size: 16px;
+                padding: 14px 32px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <div class="circle-logo"></div>
+    <div class="bg-shape"></div>
+    <div class="bg-shape"></div>
+    <div class="bg-shape"></div>
+
+    <div class="container">
+        <div class="logo">
+            <div class="circle-logo"></div>
+        </div>
+
+        <div class="badge">
+            Under Construction
+            <span class="loading-dots">
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+            </span>
+        </div>
+
+        <h1>humanmade.agency</h1>
+        <p class="subtitle">Crafting Digital Experiences</p>
+        <p class="tagline">
+            We're working on something amazing. Our new website is coming soon with fresh ideas,
+            innovative solutions, and human-centered design.
+        </p>
+
+        <div class="contact">
+            <p>Interested in working together?</p>
+            <a href="mailto:hello@humanmade.agency" class="email-link">Get in Touch</a>
+        </div>
+    </div>
 </body>
 </html>
